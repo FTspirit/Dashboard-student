@@ -1434,6 +1434,7 @@ body {
 
 .app-table {
   padding-bottom: 32px;
+  text-align: center;
 }
 
 .app-table-wrapper {
@@ -1465,7 +1466,6 @@ body {
 }
 .app-table-wrapper table tr th {
   padding: 12px 0;
-  font: 16px Poppins-Medium;
   color: #000;
 }
 .app-table-wrapper table tr td {

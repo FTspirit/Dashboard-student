@@ -21,5 +21,3 @@ const mmObj = window.matchMedia("(min-width: 1399.98px)"),
     sideBarClose=document.getElementById('nav-close-btn');
 myFunction(mmObj);
 mmObj.addEventListener("change", myFunction);
-
-
