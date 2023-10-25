@@ -1,67 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/1ab94d0eba.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/1ab94d0eba.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Login Form</title>
-    <link rel="stylesheet" href="login.style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="login.style.css" />
+  </head>
+  <body>
     <main class="container">
-        <h2>Đăng nhập</h2>
-        <form id="login-form" onsubmit="submitForm(event)">
-            <div class="input-field">
-                <input type="text" name="username" id="username"
-                    placeholder="Tài khoản">
-                <div class="underline"></div>
-            </div>
-            <div class="input-field">
-                <input type="password" name="password" id="password"
-                    placeholder="Mật khẩu">
-                <div class="underline"></div>
-            </div>
+      <h2>Đăng nhập</h2>
+      <form id="login-form" onsubmit="submitForm(event)">
+        <div class="input-field">
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Tài khoản"
+          />
+          <div class="underline"></div>
+        </div>
+        <div class="input-field">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Mật khẩu"
+          />
+          <div class="underline"></div>
+        </div>
 
-            <div class="error-login" id="error">Thông tin đăng nhập hoặc mật khẩu chưa chính xác</div>
-            <input type="submit" value="Login">
-        </form>
+        <div class="error-login" id="error">
+          Thông tin đăng nhập hoặc mật khẩu chưa chính xác
+        </div>
+        <input type="submit" value="Login" />
+      </form>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        localStorage.clear();
-        function submitForm(event) {
-            event.preventDefault(); // Prevent the form from submitting normally
+      localStorage.clear();
+      function submitForm(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
 
-            // Get form data
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+        // Get form data
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
 
-            // API endpoint to call (replace with your API URL)
-            const apiUrl = 'http://localhost:4444/api/login';
+        // API endpoint to call (replace with your API URL)
+        const apiUrl = "http://localhost:5566/api/login";
 
-            // Data to send to the API
-            const data = {
-                username: username,
-                password: password,
-                role: 0,
-            };
+        // Data to send to the API
+        const data = {
+          username: username,
+          password: password,
+          role: 0,
+        };
 
-            // Send a POST request to the API
-            axios.post(apiUrl, data)
-                .then(response => {
-                    const dataJSON = JSON.stringify(response.data);
-                    localStorage.setItem('studentData', dataJSON);
-                    window.location.href = './index.html';
-                })
-                .catch(error => {
-                    // Handle API request errors
-                    console.error('API request error:', error);
-                    // Create a new element
-                    const errorHtml = document.querySelector('#error');
-                    // Add a class to the element
-                    errorHtml.classList.add('error-none');
-                });
-        }
+        // Send a POST request to the API
+        axios
+          .post(apiUrl, data)
+          .then((response) => {
+            const dataJSON = JSON.stringify(response.data);
+            localStorage.setItem("studentData", dataJSON);
+            window.location.href = "./index.html";
+          })
+          .catch((error) => {
+            // Handle API request errors
+            console.error("API request error:", error);
+            // Create a new element
+            const errorHtml = document.querySelector("#error");
+            // Add a class to the element
+            errorHtml.classList.add("error-none");
+          });
+      }
     </script>
-</body>
+  </body>
 </html>
